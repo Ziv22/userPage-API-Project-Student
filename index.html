@@ -14,22 +14,37 @@
     </head>
 
     <body>
-        <script id="user-template"    type="text/x-handlebars-template">
-            <img id="profile-pic" src="{{modifiedData.picture.medium}}" alt="" srcset="">
-            <h2 class="user-info">{{modifiedData.name.first}} {{modifiedData.name.last}}</h2>
+        <script id="user-template" type="text/x-handlebars-template">
+            
+            <img id="profile-pic"  src="{{modifiedData.picture.medium}}" alt="" srcset="">
+            <div class="user-info">
+                <h2>
+                    {{modifiedData.name.first}} {{modifiedData.name.last}}
+                </h2>
+                <h3>
+                    {{modifiedData.location.city}}, {{modifiedData.location.state}}
+                </h3>
+            </div>
+
         </script>
 
         <script id="quote-template"   type="text/x-handlebars-template">
+            <h4>Favorite Quote:</h4>
             <p>{{modifiedData}}</p>
+            <h5>- Kanye</h5>
         </script>
 
         <script id="pokemon-template" type="text/x-handlebars-template">
             <img id="pokemon-image" src="{{modifiedData.url}}">
-            <p id="pokemon-text">Favoritr pokemon: {{modifiedData.name}}</p>
+            <p id="pokemon-text">
+                Favoritr pokemon: {{modifiedData.name}}
+            </p>
         </script>
 
         <script id="hipster-template" type="text/x-handlebars-template">
-            <p class="hipster-text">{{modifiedData}}</p>
+            <p class="hipster-text">
+                {{modifiedData}}
+            </p>
         </script>
 
         <script id="friends-template" type="text/x-handlebars-template">
@@ -57,6 +72,8 @@
             <div class="buttons">	
                 <button class="control-buttons" id="load-user">Load User Data</button>	
                 <button class="control-buttons" id="display-user">Display User</button>	
+                <button class="control-buttons" id="save-user">Save User</button>	
+                <button class="control-buttons" id="display-saved-user">Display Saved User</button>	
             </div>	
         </div>
 

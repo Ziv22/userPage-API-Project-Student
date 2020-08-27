@@ -50,11 +50,15 @@ class APIManager {
     }
 
     getInfo(){
-        let url = `https://hipsum.co/api/?type=hipster-centric&sentences=20`
+        let url = `https://hipsum.co/api/?type=hipster-centric&sentences=10`
         const modifyInfoData = hipster => {
             this.data['hipster'] = hipster[0]
         } 
         this.helper(url , modifyInfoData)
+    }
+
+    saveTolocalStorage(){
+        localStorage["currentUser"] = JSON.stringify(this.data)
     }
 }
 

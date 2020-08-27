@@ -6,7 +6,7 @@ class Renderer {
         const renderHelper  = (key, modifiedData) =>{
             const source    = $(`#${key}-template`).html()
             const template  = Handlebars.compile(source)
-            const toAppend  = template( {modifiedData})//{modifiedData:{pokemon:{name: "oooooo"}}}
+            const toAppend  = template( {modifiedData})
             $(`.${key}-container`).empty()     
             $(`.${key}-container`).append(toAppend)     
         }
@@ -16,6 +16,9 @@ class Renderer {
         renderHelper(`hipster`, data.hipster)
         renderHelper(`pokemon`, data.pokemon)
         renderHelper(`quote`  , data.quote)
+    }
+    showfromlocalStorage(data){
+        this.render(data)
     }
 }
 
