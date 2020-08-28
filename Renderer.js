@@ -2,13 +2,21 @@ class Renderer {
     constructor(){
     }
 
+    showNamesList(modifiedData){
+        const source    = $(`#select-user-template`).html()
+        const template  = Handlebars.compile(source)
+        // const toAppend  = template( {modifiedData})           
+        const toAppend  = template( {modifiedData: ["a","B","C"]})           
+
+        $(`#select-user-container`).empty().append(toAppend) 
+    }
+    
     render(data){
         const renderHelper  = (key, modifiedData) =>{
             const source    = $(`#${key}-template`).html()
             const template  = Handlebars.compile(source)
             const toAppend  = template( {modifiedData})
-            $(`.${key}-container`).empty()     
-            $(`.${key}-container`).append(toAppend)     
+            $(`.${key}-container`).empty().append(toAppend) 
         }
 
         renderHelper(`user`   , data.user)
@@ -17,6 +25,7 @@ class Renderer {
         renderHelper(`pokemon`, data.pokemon)
         renderHelper(`quote`  , data.quote)
     }
+
     showfromlocalStorage(data){
         this.render(data)
     }

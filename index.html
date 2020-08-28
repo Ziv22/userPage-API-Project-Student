@@ -16,16 +16,23 @@
     <body>
         <script id="user-template" type="text/x-handlebars-template">
             
-            <img id="profile-pic"  src="{{modifiedData.picture.medium}}" alt="" srcset="">
+            <img id="profile-pic"  src="{{modifiedData.picture}}" alt="" srcset="">
             <div class="user-info">
                 <h2>
-                    {{modifiedData.name.first}} {{modifiedData.name.last}}
+                    {{modifiedData.firstName}} {{modifiedData.lastName}}
                 </h2>
                 <h3>
-                    {{modifiedData.location.city}}, {{modifiedData.location.state}}
+                    {{modifiedData.city}}, {{modifiedData.state}}
                 </h3>
             </div>
 
+        </script>
+        <script id="select-user-template" type="text/x-handlebars-template"></script>
+            <select>   
+                {{#each modifiedData}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
         </script>
 
         <script id="quote-template"   type="text/x-handlebars-template">
@@ -50,13 +57,14 @@
         <script id="friends-template" type="text/x-handlebars-template">
             <ul>
                 {{#each modifiedData}}
-                <li>{{this.name.first}}</li>
+                <li>{{this.firstName}} {{this.lastName}}</li>
                 {{/each}}
             </ul>
         </script>
 
         <div class="container">	
             <div class="user-container"></div>	
+            <div class="select-user-container"></div>	
             <div class="quote-container">
                
             </div>	
@@ -73,7 +81,7 @@
                 <button class="control-buttons" id="load-user">Load User Data</button>	
                 <button class="control-buttons" id="display-user">Display User</button>	
                 <button class="control-buttons" id="save-user">Save User</button>	
-                <button class="control-buttons" id="display-saved-user">Display Saved User</button>	
+                <button class="control-buttons" id="display-saved-users">Display Saved Users</button>	
             </div>	
         </div>
 
