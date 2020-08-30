@@ -27,14 +27,15 @@
             </div>
 
         </script>
-        <script id="select-user-template" type="text/x-handlebars-template"></script>
-            <select>   
+
+        <script id="select-user-template" type="text/x-handlebars-template">
+            <select id="select-user">   
                 {{#each modifiedData}}
-                    <option value="{{this}}">{{this}}</option>
+                <option value="{{this}}">{{this}}</option>
                 {{/each}}
             </select>
         </script>
-
+        
         <script id="quote-template"   type="text/x-handlebars-template">
             <h4>Favorite Quote:</h4>
             <p>{{modifiedData}}</p>

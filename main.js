@@ -1,44 +1,38 @@
 const render = new Renderer()
 const apiManager = new APIManager()
 
-const $getUserData = $('#load-user')
+const $displaySavedUsers    = $('#display-saved-users')
+const $displaytUserData     = $('#display-user')
+const $getUserData          = $('#load-user')
+const $saveUser             = $('#save-user')
+
+localStorage
+
 $getUserData.on("click", function(){
+    apiManager.getPokemon()
     apiManager.getPeople()
     apiManager.getQuote()
-    apiManager.getPokemon()
     apiManager.getInfo()
 })
 
-const $displaytUserData = $('#display-user')
 $displaytUserData.on("click", function(){
     render.render(apiManager.data)
 })
 
 const modifyNamesList = () =>{
-    const users = JSON.parse(localStorage.users)
-    console.log(users)
-    return users.list.map(u => `${u.firstName} ${u.lastName}`)
+    const users = JSON.parse(localStorage.users  || "[]")
+    return users.list
 }
 
-const $saveUser = $('#save-user')
+
 $saveUser.on("click", function(){
     apiManager.saveTolocalStorage()
-    names = modifyNamesList()
-    render.showNamesList(names)
+    render.showNamesList(modifyNamesList())
 })
-
-const $displaySavedUsers = $('#display-saved-users')
-const $selectedUser = $('#select-user').val()
 
 $displaySavedUsers.on("click", function(){
-    const users = JSON.parse(localStorage.users)
-    console.log(`users: ${users}`,`selected User: ${$selectedUser}`)
-    render.render(users,$selectedUser)
+    const $selectedUser = $('#select-user').val()
+    const localUsers = JSON.parse(localStorage.users  || "[]")
+    render.showfromlocalStorage(localUsers[`${$selectedUser}`])
 })
 
-$('#select-user').load(function(){
-    names = modifyNamesList()
-    render.showNamesList(names)
-})
-
-render.showNamesList()

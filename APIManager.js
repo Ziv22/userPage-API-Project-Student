@@ -1,7 +1,7 @@
 class APIManager {
     constructor() {
         this.data = {}
-        this.users = {list:[]}
+        this.users = []
     }
 
     randomNumber(limit) {
@@ -21,7 +21,6 @@ class APIManager {
         })
     }
 
-
     getPeople() {
         let url = `https://randomuser.me/api/?results=7`
         const modifyPeopleData = response => {
@@ -34,8 +33,6 @@ class APIManager {
                                     }
             this.data['user'] = modifiedUserData
             this.data['friends'] = response.results.map(u => ({ firstName: u.name.first, lastName: u.name.last }))
-            console.log(this.data.user)
-            console.log(this.data.friends)
         }
         this.helper(url, modifyPeopleData)
     }
@@ -68,10 +65,12 @@ class APIManager {
     }
 
     saveTolocalStorage() {
-        let userName = `${this.data.user.firstName}_${this.data.user.lastName}`
-        this.users[userName] = this.data
-        this.users.list.push(userName)
-        localStorage['users'] = JSON.stringify(this.users)
+        // let userName = `${this.data.user.firstName}_${this.data.user.lastName}`
+        // this.users.list.push(userName)
+        let currentLocal = JSON.parse(localStorage.users  || "[]")
+        // this.users.push(this.data)
+        currentLocal.push(this.data)
+        // this.users
     }
 }
 

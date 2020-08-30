@@ -5,10 +5,8 @@ class Renderer {
     showNamesList(modifiedData){
         const source    = $(`#select-user-template`).html()
         const template  = Handlebars.compile(source)
-        // const toAppend  = template( {modifiedData})           
-        const toAppend  = template( {modifiedData: ["a","B","C"]})           
-
-        $(`#select-user-container`).empty().append(toAppend) 
+        const toAppend  = template( {modifiedData})           
+        $(`.select-user-container`).empty().append(toAppend) 
     }
     
     render(data){
