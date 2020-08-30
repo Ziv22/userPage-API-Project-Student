@@ -64,13 +64,14 @@ class APIManager {
         this.helper(url, modifyInfoData)
     }
 
-    saveTolocalStorage() {
-        // let userName = `${this.data.user.firstName}_${this.data.user.lastName}`
-        // this.users.list.push(userName)
-        let currentLocal = JSON.parse(localStorage.users  || "[]")
-        // this.users.push(this.data)
-        currentLocal.push(this.data)
-        // this.users
-    }
+    // Desn't work yet
+    // saveTolocalStorage() {
+    //     // let userName = `${this.data.user.firstName}_${this.data.user.lastName}`
+    //     // this.users.list.push(userName)
+    //     let currentLocal = JSON.parse(localStorage.users  || "[]")
+    //     // this.users.push(this.data)
+    //     currentLocal.push(this.data)
+    //     // this.users
+    // }
 }
 
